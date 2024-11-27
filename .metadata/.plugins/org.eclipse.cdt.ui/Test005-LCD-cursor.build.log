@@ -1,0 +1,10 @@
+16:25:58 **** Incremental Build of configuration Debug for project Test005-LCD-cursor ****
+make -j24 all 
+arm-none-eabi-size  Test005-LCD-cursor.elf 
+   text	   data	    bss	    dec	    hex	filename
+  24284	    112	   2312	  26708	   6854	Test005-LCD-cursor.elf
+Finished building: default.size.stdout
+ 
+
+16:25:58 Build Finished. 0 errors, 0 warnings. (took 283ms)
+

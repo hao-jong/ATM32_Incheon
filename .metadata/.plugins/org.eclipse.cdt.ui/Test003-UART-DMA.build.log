@@ -1,0 +1,60 @@
+16:32:25 **** Incremental Build of configuration Debug for project Test003-UART-DMA ****
+make -j24 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F411xE -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
+../Core/Src/main.c: In function 'GetBuffer':
+../Core/Src/main.c:75:17: warning: implicit declaration of function 'memcpy' [-Wimplicit-function-declaration]
+   75 |                 memcpy(bb, Buf + head, tail - head);
+      |                 ^~~~~~
+../Core/Src/main.c:21:1: note: include '<string.h>' or provide a declaration of 'memcpy'
+   20 | #include "main.h"
+  +++ |+#include <string.h>
+   21 | 
+../Core/Src/main.c:75:17: warning: incompatible implicit declaration of built-in function 'memcpy' [-Wbuiltin-declaration-mismatch]
+   75 |                 memcpy(bb, Buf + head, tail - head);
+      |                 ^~~~~~
+../Core/Src/main.c:75:17: note: include '<string.h>' or provide a declaration of 'memcpy'
+../Core/Src/main.c:80:17: warning: incompatible implicit declaration of built-in function 'memcpy' [-Wbuiltin-declaration-mismatch]
+   80 |                 memcpy(bb, Buf + head, MAX_BUF - head);
+      |                 ^~~~~~
+../Core/Src/main.c:80:17: note: include '<string.h>' or provide a declaration of 'memcpy'
+../Core/Src/main.c: In function 'main':
+../Core/Src/main.c:121:3: warning: implicit declaration of function 'ProgramStart' [-Wimplicit-function-declaration]
+  121 |   ProgramStart("UART-DMA");
+      |   ^~~~~~~~~~~~
+../Core/Src/main.c:122:32: warning: pointer targets in passing argument 2 of 'HAL_UART_Receive_DMA' differ in signedness [-Wpointer-sign]
+  122 |   HAL_UART_Receive_DMA(&huart2,Buf,MAX_BUF);
+      |                                ^~~
+      |                                |
+      |                                char *
+In file included from ../Core/Inc/stm32f4xx_hal_conf.h:411,
+                 from ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal.h:29,
+                 from ../Core/Inc/main.h:30,
+                 from ../Core/Src/main.c:20:
+../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_uart.h:750:76: note: expected 'uint8_t *' {aka 'unsigned char *'} but argument is of type 'char *'
+  750 | HAL_StatusTypeDef HAL_UART_Receive_DMA(UART_HandleTypeDef *huart, uint8_t *pData, uint16_t Size);
+      |                                                                   ~~~~~~~~~^~~~~
+../Core/Src/main.c:132:19: warning: implicit declaration of function 'printf' [-Wimplicit-function-declaration]
+  132 |                   printf("Received Data :%s\r\n",bb);
+      |                   ^~~~~~
+../Core/Src/main.c:21:1: note: include '<stdio.h>' or provide a declaration of 'printf'
+   20 | #include "main.h"
+  +++ |+#include <stdio.h>
+   21 | 
+../Core/Src/main.c:132:19: warning: incompatible implicit declaration of built-in function 'printf' [-Wbuiltin-declaration-mismatch]
+  132 |                   printf("Received Data :%s\r\n",bb);
+      |                   ^~~~~~
+../Core/Src/main.c:132:19: note: include '<stdio.h>' or provide a declaration of 'printf'
+arm-none-eabi-gcc -o "Test003-UART-DMA.elf" @"objects.list"   -mcpu=cortex-m4 -T"C:\Users\user\source\repos\STM32\Test003-UART-DMA\STM32F411RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="Test003-UART-DMA.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: Test003-UART-DMA.elf
+ 
+arm-none-eabi-size  Test003-UART-DMA.elf 
+arm-none-eabi-objdump -h -S Test003-UART-DMA.elf  > "Test003-UART-DMA.list"
+   text	   data	    bss	    dec	    hex	filename
+  18132	    112	   2184	  20428	   4fcc	Test003-UART-DMA.elf
+Finished building: default.size.stdout
+ 
+Finished building: Test003-UART-DMA.list
+ 
+
+16:32:25 Build Finished. 0 errors, 7 warnings. (took 590ms)
+

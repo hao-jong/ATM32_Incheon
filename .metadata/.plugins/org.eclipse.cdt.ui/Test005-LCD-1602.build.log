@@ -1,0 +1,64 @@
+12:01:40 **** Incremental Build of configuration Debug for project Test005-LCD-1602 ****
+make -j24 all 
+arm-none-eabi-gcc "../Core/Src/lcd1602.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F411xE -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/lcd1602.d" -MT"Core/Src/lcd1602.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/lcd1602.o"
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F411xE -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
+../Core/Src/main.c: In function 'main':
+../Core/Src/main.c:98:3: warning: implicit declaration of function 'ProgramStart' [-Wimplicit-function-declaration]
+   98 |   ProgramStart("LCD (1602)");
+      |   ^~~~~~~~~~~~
+../Core/Src/main.c:100:3: warning: implicit declaration of function 'I2C_scan' [-Wimplicit-function-declaration]
+  100 |   I2C_scan();
+      |   ^~~~~~~~
+../Core/Src/main.c:101:3: warning: implicit declaration of function 'lcd_init' [-Wimplicit-function-declaration]
+  101 |   lcd_init();
+      |   ^~~~~~~~
+../Core/Src/main.c:102:3: warning: implicit declaration of function 'lcd_print' [-Wimplicit-function-declaration]
+  102 |   lcd_print("no Hello");
+      |   ^~~~~~~~~
+../Core/Src/main.c:103:3: warning: implicit declaration of function 'lcd_printEx' [-Wimplicit-function-declaration]
+  103 |   lcd_printEx("no World",1);
+      |   ^~~~~~~~~~~
+../Core/Src/lcd1602.c: In function 'lcd_command':
+../Core/Src/lcd1602.c:27:51: warning: pointer targets in passing argument 3 of 'HAL_I2C_Master_Transmit' differ in signedness [-Wpointer-sign]
+   27 |         HAL_I2C_Master_Transmit(&hi2c1, I2C_ADDR, dd, 4, 10);
+      |                                                   ^~
+      |                                                   |
+      |                                                   char *
+In file included from ../Core/Inc/stm32f4xx_hal_conf.h:363,
+                 from ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal.h:29,
+                 from ../Core/Inc/main.h:30,
+                 from ../Core/Src/lcd1602.c:9:
+../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_i2c.h:566:98: note: expected 'uint8_t *' {aka 'unsigned char *'} but argument is of type 'char *'
+  566 | HAL_StatusTypeDef HAL_I2C_Master_Transmit(I2C_HandleTypeDef *hi2c, uint16_t DevAddress, uint8_t *pData, uint16_t Size, uint32_t Timeout);
+      |                                                                                         ~~~~~~~~~^~~~~
+../Core/Src/lcd1602.c: In function 'lcd_data':
+../Core/Src/lcd1602.c:44:51: warning: pointer targets in passing argument 3 of 'HAL_I2C_Master_Transmit' differ in signedness [-Wpointer-sign]
+   44 |         HAL_I2C_Master_Transmit(&hi2c1, I2C_ADDR, dd, 4, 10);
+      |                                                   ^~
+      |                                                   |
+      |                                                   char *
+In file included from ../Core/Inc/stm32f4xx_hal_conf.h:363,
+                 from ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal.h:29,
+                 from ../Core/Inc/main.h:30,
+                 from ../Core/Src/lcd1602.c:9:
+../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_i2c.h:566:98: note: expected 'uint8_t *' {aka 'unsigned char *'} but argument is of type 'char *'
+  566 | HAL_StatusTypeDef HAL_I2C_Master_Transmit(I2C_HandleTypeDef *hi2c, uint16_t DevAddress, uint8_t *pData, uint16_t Size, uint32_t Timeout);
+      |                                                                                         ~~~~~~~~~^~~~~
+../Core/Src/lcd1602.c: In function 'I2C_scan':
+../Core/Src/lcd1602.c:85:1: warning: control reaches end of non-void function [-Wreturn-type]
+   85 | }
+      | ^
+arm-none-eabi-gcc -o "Test005-LCD-1602.elf" @"objects.list"   -mcpu=cortex-m4 -T"C:\Users\user\source\repos\STM32\Test005-LCD-1602\STM32F411RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="Test005-LCD-1602.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: Test005-LCD-1602.elf
+ 
+arm-none-eabi-size  Test005-LCD-1602.elf 
+arm-none-eabi-objdump -h -S Test005-LCD-1602.elf  > "Test005-LCD-1602.list"
+   text	   data	    bss	    dec	    hex	filename
+  17628	    112	   2064	  19804	   4d5c	Test005-LCD-1602.elf
+Finished building: default.size.stdout
+ 
+Finished building: Test005-LCD-1602.list
+ 
+
+12:01:41 Build Finished. 0 errors, 8 warnings. (took 590ms)
+
