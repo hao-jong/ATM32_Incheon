@@ -1,0 +1,37 @@
+16:24:43 **** Incremental Build of configuration Debug for project Test006-uSonic ****
+make -j24 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F411xE -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
+../Core/Src/main.c: In function 'Distance':
+../Core/Src/main.c:85:9: warning: this 'while' clause does not guard... [-Wmisleading-indentation]
+   85 |         while(HAL_GPIO_ReadPin(Echo_GPIO_Port, Echo_Pin) == 0);
+      |         ^~~~~
+../Core/Src/main.c:86:9: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the 'while'
+   86 |         {
+      |         ^
+../Core/Src/main.c:93:9: warning: this 'while' clause does not guard... [-Wmisleading-indentation]
+   93 |         while(HAL_GPIO_ReadPin(Echo_GPIO_Port, Echo_Pin) == 1);
+      |         ^~~~~
+../Core/Src/main.c:94:9: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the 'while'
+   94 |         {
+      |         ^
+../Core/Src/main.c:81:13: warning: unused variable 't0' [-Wunused-variable]
+   81 |         int t0 = 0 ,t1,t2;
+      |             ^~
+../Core/Src/main.c: In function 'main':
+../Core/Src/main.c:146:3: warning: implicit declaration of function 'ProgramStart' [-Wimplicit-function-declaration]
+  146 |   ProgramStart("Ultra Sonic SR-04(SRF-05)");
+      |   ^~~~~~~~~~~~
+arm-none-eabi-gcc -o "Test006-uSonic.elf" @"objects.list"   -mcpu=cortex-m4 -T"C:\Users\user\source\repos\STM32\Test006-uSonic\STM32F411RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="Test006-uSonic.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -u _printf_float -u _scanf_float -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: Test006-uSonic.elf
+ 
+arm-none-eabi-size  Test006-uSonic.elf 
+arm-none-eabi-objdump -h -S Test006-uSonic.elf  > "Test006-uSonic.list"
+   text	   data	    bss	    dec	    hex	filename
+  34040	    476	   2052	  36568	   8ed8	Test006-uSonic.elf
+Finished building: default.size.stdout
+ 
+Finished building: Test006-uSonic.list
+ 
+
+16:24:44 Build Finished. 0 errors, 4 warnings. (took 721ms)
+

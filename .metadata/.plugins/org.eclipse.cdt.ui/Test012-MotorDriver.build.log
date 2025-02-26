@@ -1,0 +1,36 @@
+18:21:50 **** Incremental Build of configuration Debug for project Test012-MotorDriver ****
+make -j24 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F411xE -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -I../Middlewares/Third_Party/FreeRTOS/Source/include -I../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS -I../Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM4F -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
+../Core/Src/main.c: In function 'main':
+../Core/Src/main.c:156:3: warning: implicit declaration of function 'ProgramStart' [-Wimplicit-function-declaration]
+  156 |   ProgramStart ("DC Motor & Motor Driver Test");
+      |   ^~~~~~~~~~~~
+../Core/Src/main.c: In function 'StartTask01':
+../Core/Src/main.c:510:34: warning: implicit declaration of function 'Distance' [-Wimplicit-function-declaration]
+  510 |                   int distance = Distance();
+      |                                  ^~~~~~~~
+../Core/Src/main.c:511:19: warning: implicit declaration of function 'printf' [-Wimplicit-function-declaration]
+  511 |                   printf("dist = %d\r\n", distance);
+      |                   ^~~~~~
+../Core/Src/main.c:22:1: note: include '<stdio.h>' or provide a declaration of 'printf'
+   21 | #include "cmsis_os.h"
+  +++ |+#include <stdio.h>
+   22 | 
+../Core/Src/main.c:511:19: warning: incompatible implicit declaration of built-in function 'printf' [-Wbuiltin-declaration-mismatch]
+  511 |                   printf("dist = %d\r\n", distance);
+      |                   ^~~~~~
+../Core/Src/main.c:511:19: note: include '<stdio.h>' or provide a declaration of 'printf'
+arm-none-eabi-gcc -o "Test012-MotorDriver.elf" @"objects.list"   -mcpu=cortex-m4 -T"C:\Users\user\source\repos\STM32\Test012-MotorDriver\STM32F411RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="Test012-MotorDriver.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -u _printf_float -u _scanf_float -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: Test012-MotorDriver.elf
+ 
+arm-none-eabi-size  Test012-MotorDriver.elf 
+arm-none-eabi-objdump -h -S Test012-MotorDriver.elf  > "Test012-MotorDriver.list"
+   text	   data	    bss	    dec	    hex	filename
+  48536	    480	  18656	  67672	  10858	Test012-MotorDriver.elf
+Finished building: default.size.stdout
+ 
+Finished building: Test012-MotorDriver.list
+ 
+
+18:21:51 Build Finished. 0 errors, 4 warnings. (took 745ms)
+

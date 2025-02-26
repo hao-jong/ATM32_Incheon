@@ -1,0 +1,81 @@
+15:29:07 **** Incremental Build of configuration Debug for project Test009-Bluetooth ****
+make -j24 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F411xE -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
+../Core/Src/main.c: In function 'HAL_UART_RxCpltCallback':
+../Core/Src/main.c:76:25: warning: implicit declaration of function 'CheckCMD' [-Wimplicit-function-declaration]
+   76 |                         CheckCMD(buf1);
+      |                         ^~~~~~~~
+../Core/Src/main.c:87:52: warning: pointer targets in passing argument 2 of 'HAL_UART_Transmit' differ in signedness [-Wpointer-sign]
+   87 |                         HAL_UART_Transmit(&huart2, "\n", 1, 10); //Terminal Echo
+      |                                                    ^~~~
+      |                                                    |
+      |                                                    char *
+In file included from ../Core/Inc/stm32f4xx_hal_conf.h:411,
+                 from ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal.h:29,
+                 from ../Core/Inc/main.h:30,
+                 from ../Core/Src/main.c:20:
+../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_uart.h:745:79: note: expected 'const uint8_t *' {aka 'const unsigned char *'} but argument is of type 'char *'
+  745 | HAL_StatusTypeDef HAL_UART_Transmit(UART_HandleTypeDef *huart, const uint8_t *pData, uint16_t Size, uint32_t Timeout);
+      |                                                                ~~~~~~~~~~~~~~~^~~~~
+../Core/Src/main.c: In function 'Trim':
+../Core/Src/main.c:101:21: warning: implicit declaration of function 'strlen' [-Wimplicit-function-declaration]
+  101 |         int     t = strlen(s) - 1;
+      |                     ^~~~~~
+../Core/Src/main.c:21:1: note: include '<string.h>' or provide a declaration of 'strlen'
+   20 | #include "main.h"
+  +++ |+#include <string.h>
+   21 | 
+../Core/Src/main.c:101:21: warning: incompatible implicit declaration of built-in function 'strlen' [-Wbuiltin-declaration-mismatch]
+  101 |         int     t = strlen(s) - 1;
+      |                     ^~~~~~
+../Core/Src/main.c:101:21: note: include '<string.h>' or provide a declaration of 'strlen'
+../Core/Src/main.c:124:9: warning: implicit declaration of function 'strncpy' [-Wimplicit-function-declaration]
+  124 |         strncpy(dest,s+h,t-h+1);
+      |         ^~~~~~~
+../Core/Src/main.c:124:9: note: include '<string.h>' or provide a declaration of 'strncpy'
+../Core/Src/main.c:124:9: warning: incompatible implicit declaration of built-in function 'strncpy' [-Wbuiltin-declaration-mismatch]
+../Core/Src/main.c:124:9: note: include '<string.h>' or provide a declaration of 'strncpy'
+../Core/Src/main.c: In function 'small2capital':
+../Core/Src/main.c:130:24: warning: incompatible implicit declaration of built-in function 'strlen' [-Wbuiltin-declaration-mismatch]
+  130 |         for (t=0; t <= strlen(str); t++)
+      |                        ^~~~~~
+../Core/Src/main.c:130:24: note: include '<string.h>' or provide a declaration of 'strlen'
+../Core/Src/main.c: In function 'capital2small':
+../Core/Src/main.c:143:24: warning: incompatible implicit declaration of built-in function 'strlen' [-Wbuiltin-declaration-mismatch]
+  143 |         for (t=0; t <= strlen(str); t++)
+      |                        ^~~~~~
+../Core/Src/main.c:143:24: note: include '<string.h>' or provide a declaration of 'strlen'
+../Core/Src/main.c: At top level:
+../Core/Src/main.c:153:6: warning: conflicting types for 'CheckCMD'; have 'void(char *)'
+  153 | void CheckCMD(char *bb)//str :"LED     1" ==> str = "LED 1"
+      |      ^~~~~~~~
+../Core/Src/main.c:76:25: note: previous implicit declaration of 'CheckCMD' with type 'void(char *)'
+   76 |                         CheckCMD(buf1);
+      |                         ^~~~~~~~
+../Core/Src/main.c: In function 'CheckCMD':
+../Core/Src/main.c:158:12: warning: implicit declaration of function 'strncmp' [-Wimplicit-function-declaration]
+  158 |         if(strncmp(str, "LED", 3) == 0)
+      |            ^~~~~~~
+../Core/Src/main.c:158:12: note: include '<string.h>' or provide a declaration of 'strncmp'
+../Core/Src/main.c:158:32: warning: 'strncmp' argument 3 type is 'int' where 'unsigned int' is expected in a call to built-in function declared without prototype [-Wbuiltin-declaration-mismatch]
+  158 |         if(strncmp(str, "LED", 3) == 0)
+      |                                ^
+<built-in>: note: built-in 'strncmp' declared here
+../Core/Src/main.c: In function 'main':
+../Core/Src/main.c:207:3: warning: implicit declaration of function 'ProgramStart' [-Wimplicit-function-declaration]
+  207 |   ProgramStart("Bluetooth ");
+      |   ^~~~~~~~~~~~
+arm-none-eabi-gcc -o "Test009-Bluetooth.elf" @"objects.list"   -mcpu=cortex-m4 -T"C:\Users\user\source\repos\STM32\Test009-Bluetooth\STM32F411RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="Test009-Bluetooth.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: Test009-Bluetooth.elf
+ 
+arm-none-eabi-size  Test009-Bluetooth.elf 
+arm-none-eabi-objdump -h -S Test009-Bluetooth.elf  > "Test009-Bluetooth.list"
+   text	   data	    bss	    dec	    hex	filename
+  19692	    112	   2456	  22260	   56f4	Test009-Bluetooth.elf
+Finished building: default.size.stdout
+ 
+Finished building: Test009-Bluetooth.list
+ 
+
+15:29:08 Build Finished. 0 errors, 12 warnings. (took 587ms)
+

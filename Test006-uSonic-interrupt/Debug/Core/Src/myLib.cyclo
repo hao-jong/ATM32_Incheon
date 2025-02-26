@@ -1,0 +1,6 @@
+../Core/Src/myLib.c:7:5:__io_getchar	2
+../Core/Src/myLib.c:16:5:__io_putchar	1
+../Core/Src/myLib.c:22:6:Standby	2
+../Core/Src/myLib.c:26:6:cls	1
+../Core/Src/myLib.c:31:6:Cursor	1
+../Core/Src/myLib.c:37:6:ProgramStart	1

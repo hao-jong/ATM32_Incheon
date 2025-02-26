@@ -1,0 +1,78 @@
+12:19:41 **** Incremental Build of configuration Debug for project AutoVehicle ****
+make -j24 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F411xE -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
+arm-none-eabi-gcc "../Core/Src/usonic.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F411xE -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/usonic.d" -MT"Core/Src/usonic.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/usonic.o"
+../Core/Src/main.c: In function 'main':
+../Core/Src/main.c:96:3: warning: implicit declaration of function 'ProgramStart' [-Wimplicit-function-declaration]
+   96 |   ProgramStart("AutoVehicle");
+      |   ^~~~~~~~~~~~
+../Core/Src/main.c:104:33: warning: implicit declaration of function 'Distances' [-Wimplicit-function-declaration]
+  104 |             double *distances = Distances();
+      |                                 ^~~~~~~~~
+../Core/Src/main.c:104:33: warning: initialization of 'double *' from 'int' makes pointer from integer without a cast [-Wint-conversion]
+../Core/Src/main.c:108:17: warning: implicit declaration of function 'printf' [-Wimplicit-function-declaration]
+  108 |                 printf("Error: Sensor timeout!\r\n");
+      |                 ^~~~~~
+../Core/Src/usonic.c: In function 'Distances':
+../Core/Src/usonic.c:40:9: warning: this 'while' clause does not guard... [-Wmisleading-indentation]
+   40 |         while(HAL_GPIO_ReadPin(Echo0_GPIO_Port, Echo0_Pin) == 0);
+      |         ^~~~~
+../Core/Src/main.c:21:1: note: include '<stdio.h>' or provide a declaration of 'printf'
+   20 | #include "main.h"
+  +++ |+#include <stdio.h>
+   21 | 
+../Core/Src/usonic.c:41:9: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the 'while'
+   41 |         {
+      |         ^
+../Core/Src/main.c:108:17: warning: incompatible implicit declaration of built-in function 'printf' [-Wbuiltin-declaration-mismatch]
+  108 |                 printf("Error: Sensor timeout!\r\n");
+      |                 ^~~~~~
+../Core/Src/main.c:108:17: note: include '<stdio.h>' or provide a declaration of 'printf'
+../Core/Src/main.c:112:17: warning: incompatible implicit declaration of built-in function 'printf' [-Wbuiltin-declaration-mismatch]
+  112 |                 printf("Distance 1: %d cm\r\n", (int)distances[0]);
+      |                 ^~~~~~
+../Core/Src/main.c:112:17: note: include '<stdio.h>' or provide a declaration of 'printf'
+../Core/Src/usonic.c:48:9: warning: this 'while' clause does not guard... [-Wmisleading-indentation]
+   48 |         while(HAL_GPIO_ReadPin(Echo0_GPIO_Port, Echo0_Pin) == 1);
+      |         ^~~~~
+../Core/Src/usonic.c:49:9: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the 'while'
+   49 |         {
+      |         ^
+../Core/Src/usonic.c:57:9: warning: this 'while' clause does not guard... [-Wmisleading-indentation]
+   57 |         while(HAL_GPIO_ReadPin(Echo1_GPIO_Port, Echo1_Pin) == 0);
+      |         ^~~~~
+../Core/Src/usonic.c:58:9: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the 'while'
+   58 |         {
+      |         ^
+../Core/Src/usonic.c:65:9: warning: this 'while' clause does not guard... [-Wmisleading-indentation]
+   65 |         while(HAL_GPIO_ReadPin(Echo1_GPIO_Port, Echo1_Pin) == 1);
+      |         ^~~~~
+../Core/Src/usonic.c:66:9: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the 'while'
+   66 |         {
+      |         ^
+../Core/Src/usonic.c:74:9: warning: this 'while' clause does not guard... [-Wmisleading-indentation]
+   74 |         while(HAL_GPIO_ReadPin(Echo2_GPIO_Port, Echo2_Pin) == 0);
+      |         ^~~~~
+../Core/Src/usonic.c:75:9: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the 'while'
+   75 |         {
+      |         ^
+../Core/Src/usonic.c:82:9: warning: this 'while' clause does not guard... [-Wmisleading-indentation]
+   82 |         while(HAL_GPIO_ReadPin(Echo2_GPIO_Port, Echo2_Pin) == 1);
+      |         ^~~~~
+../Core/Src/usonic.c:83:9: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the 'while'
+   83 |         {
+      |         ^
+arm-none-eabi-gcc -o "AutoVehicle.elf" @"objects.list"   -mcpu=cortex-m4 -T"C:\Users\user\source\repos\STM32\AutoVehicle\STM32F411RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="AutoVehicle.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -u _printf_float -u _scanf_float -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: AutoVehicle.elf
+ 
+arm-none-eabi-size  AutoVehicle.elf 
+arm-none-eabi-objdump -h -S AutoVehicle.elf  > "AutoVehicle.list"
+   text	   data	    bss	    dec	    hex	filename
+  34504	    476	   2072	  37052	   90bc	AutoVehicle.elf
+Finished building: default.size.stdout
+ 
+Finished building: AutoVehicle.list
+ 
+
+12:19:42 Build Finished. 0 errors, 12 warnings. (took 642ms)
+

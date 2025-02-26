@@ -1,0 +1,12 @@
+../Core/Src/main.c:68:6:HAL_UART_RxCpltCallback	5
+../Core/Src/main.c:98:6:Trim	9
+../Core/Src/main.c:127:6:small2capital	4
+../Core/Src/main.c:140:6:capital2small	4
+../Core/Src/main.c:153:6:CheckCMD	4
+../Core/Src/main.c:179:5:main	1
+../Core/Src/main.c:231:6:SystemClock_Config	3
+../Core/Src/main.c:278:13:MX_USART1_UART_Init	2
+../Core/Src/main.c:311:13:MX_USART2_UART_Init	2
+../Core/Src/main.c:342:13:MX_DMA_Init	1
+../Core/Src/main.c:364:13:MX_GPIO_Init	1
+../Core/Src/main.c:404:6:Error_Handler	1
